@@ -29,4 +29,14 @@ contract RealEstate {
         payable(owner).transfer(msg.value);
         emit LogBuyRealEstate(msg.sender, _id);
     }
+    
+    function getBuyerInfo(uint _id) public view returns (address, string memory, uint) {
+        Buyer memory buyer = buyerInfo[_id];
+
+        return (buyer.buyAddress, buyer.name, buyer.age);
+    }
+
+    function getAllBuyers() public view returns (address[10] memory) {
+        return buyers;
+    }
 }
